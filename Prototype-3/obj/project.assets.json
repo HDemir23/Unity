@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ahaka\\Desktop\\Unity Props\\Prototype-3\\Assembly-CSharp.csproj",
+      "projectUniqueName": "C:\\Users\\ahaka\\Desktop\\Unity Props\\Unity\\Prototype-3\\Assembly-CSharp.csproj",
       "projectName": "Assembly-CSharp",
-      "projectPath": "C:\\Users\\ahaka\\Desktop\\Unity Props\\Prototype-3\\Assembly-CSharp.csproj",
+      "projectPath": "C:\\Users\\ahaka\\Desktop\\Unity Props\\Unity\\Prototype-3\\Assembly-CSharp.csproj",
       "packagesPath": "C:\\Users\\ahaka\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ahaka\\Desktop\\Unity Props\\Prototype-3\\obj\\",
+      "outputPath": "C:\\Users\\ahaka\\Desktop\\Unity Props\\Unity\\Prototype-3\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

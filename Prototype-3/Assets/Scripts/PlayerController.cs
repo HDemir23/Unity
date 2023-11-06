@@ -16,7 +16,9 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 10;
     public float gravityModifier;
     public Boolean isOnGround;
+    public Boolean isDoubleJump;
     public bool gameOver = false;
+    public bool dash;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,15 +31,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
-        {
-            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            isOnGround = false;
-            playerAnim.SetTrigger("Jump_trig");
-            dirtParticle.Stop();
-            playerAudio.PlayOneShot(jumpSound, 1.0f);
-        }
+        PlayerJump();
+        PlayerDash();
     }
+
+
+
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -55,6 +55,44 @@ public class PlayerController : MonoBehaviour
             explosionParticle.Play();
             dirtParticle.Stop();
             playerAudio.PlayOneShot(crashSound, 1.0f);
+        }
+    }
+
+    void PlayerJump()
+    {
+
+
+
+
+        if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
+        {
+            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isOnGround = false;
+            playerAnim.SetTrigger("Jump_trig");
+            dirtParticle.Stop();
+            playerAudio.PlayOneShot(jumpSound, 1.0f);
+            isDoubleJump = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && !isOnGround && !isDoubleJump)
+        {
+            isDoubleJump = true;
+            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            playerAnim.SetTrigger("Jump_trig");
+            playerAudio.PlayOneShot(jumpSound, 1.0f);
+        }
+    }
+
+    void PlayerDash()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            dash = true;
+            playerAnim.SetFloat("Speed_Multiplier", 2.0f);
+        }
+        else if (dash)
+        {
+            dash = false;
+            playerAnim.SetFloat("Speed_Multiplier", 1.0f);
         }
     }
 }
